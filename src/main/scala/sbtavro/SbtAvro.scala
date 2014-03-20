@@ -56,7 +56,7 @@ object SbtAvro extends Plugin {
     sourceDirectory <<= (sourceDirectory in Compile) { _ / "avro" },
     javaSource <<= (sourceManaged in Compile) { _ / "compiled_avro" },
     stringType := "CharSequence",
-    version := "1.7.3",
+    version := "1.7.2",
 
     managedClasspath <<= (classpathTypes, update) map { (ct, report) =>
       Classpaths.managedJars(avroConfig, ct, report)
