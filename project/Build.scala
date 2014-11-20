@@ -28,7 +28,7 @@ object build extends Build {
                 Some("Meetup Releases" at nexus + "releases")
             },
 
-            publishMavenStyle := false
+            publishMavenStyle := true
         )
     )
 }
