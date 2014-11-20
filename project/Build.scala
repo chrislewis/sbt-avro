@@ -18,7 +18,15 @@ object build extends Build {
             crossScalaVersions := Seq("2.10.2"),
             description := "Sbt plugin for compiling Avro sources",
 
-            publishTo := Some(Resolver.url("sbt-plugin-releases", new URL("http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/"))(Resolver.ivyStylePatterns)),
+            credentials += Credentials(Path.userHome / ".ivy2" / ".credentials"),
+
+            publishTo := {
+              val nexus = "http://git.dev.meetup.com:8081/nexus/content/repositories/"
+              if(isSnapshot.value)
+                Some("Meetup Snapshots" at nexus + "snapshots")
+              else
+                Some("Meetup Releases" at nexus + "releases")
+            },
 
             publishMavenStyle := false
         )
